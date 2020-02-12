@@ -62,7 +62,6 @@ public class RobotContainer {
     ;
             
   }
-
   /**
    * Use this method to define your button->command mappings.  Buttons can be created by
    * instantiating a {@link GenericHID} or one of its subclasses ({@link
@@ -89,11 +88,11 @@ public class RobotContainer {
 
     // Turn to 90 degrees when the 'X' button is pressed, with a 5 second timeout
     new JoystickButton(m_driverController, Button.kX.value)
-        .whenPressed(new TurnToAngle(90, m_robotDrive).withTimeout(5));
+        .whenPressed(new TurnToAngle(90, m_robotDrive));
 
     // Turn to -90 degrees with a profile when the 'A' button is pressed, with a 5 second timeout
     new JoystickButton(m_driverController, Button.kA.value)
-        .whenPressed(new TurnToAngleProfiled(-90, m_robotDrive).withTimeout(5));
+        .whenPressed(new TurnToAngleProfiled(-90, m_robotDrive));
   }
   
 
