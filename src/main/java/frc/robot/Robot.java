@@ -38,8 +38,7 @@ public class Robot extends TimedRobot {
     // and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
-    final AHRS m_gyro = new AHRS();
-    Shuffleboard.getTab("Gyro").add((Sendable) m_gyro);
+    
   }
 
   /**

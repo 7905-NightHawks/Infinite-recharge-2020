@@ -19,9 +19,9 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.DriveConstants;
 
 public class DriveSubsystem extends SubsystemBase {
-  private final SpeedControllerGroup m_leftMotors = new SpeedControllerGroup(
-    new WPI_VictorSPX(DriveConstants.kLeftMotor1Port),
-                               new WPI_VictorSPX(DriveConstants.kLeftMotor2Port));
+  private final SpeedControllerGroup m_leftMotors = 
+  new SpeedControllerGroup(new WPI_VictorSPX(DriveConstants.kLeftMotor1Port),
+                           new WPI_VictorSPX(DriveConstants.kLeftMotor2Port));
 
   // The motors on the right side of the drive.
   private final SpeedControllerGroup m_rightMotors =
@@ -32,14 +32,14 @@ public class DriveSubsystem extends SubsystemBase {
   private final DifferentialDrive m_drive = new DifferentialDrive(m_leftMotors, m_rightMotors);
 
   // The left-side drive encoder
-  private final Encoder m_leftEncoder =
-      new Encoder(DriveConstants.kLeftEncoderPorts[0], DriveConstants.kLeftEncoderPorts[1],
-                  DriveConstants.kLeftEncoderReversed);
+ // private final Encoder m_leftEncoder =
+  //   new Encoder(DriveConstants.kLeftEncoderPorts[0], DriveConstants.kLeftEncoderPorts[1],
+    //              DriveConstants.kLeftEncoderReversed);
 
   // The right-side drive encoder
-  private final Encoder m_rightEncoder =
-      new Encoder(DriveConstants.kRightEncoderPorts[0], DriveConstants.kRightEncoderPorts[1],
-                  DriveConstants.kRightEncoderReversed);
+  //private final Encoder m_rightEncoder =
+    //  new Encoder(DriveConstants.kRightEncoderPorts[0], DriveConstants.kRightEncoderPorts[1],
+        //          DriveConstants.kRightEncoderReversed);
 
   // The gyro sensor
   private final AHRS m_gyro = new AHRS();
@@ -49,8 +49,8 @@ public class DriveSubsystem extends SubsystemBase {
    */
   public DriveSubsystem() {
      // Sets the distance per pulse for the encoders
-     m_leftEncoder.setDistancePerPulse(DriveConstants.kEncoderDistancePerPulse);
-     m_rightEncoder.setDistancePerPulse(DriveConstants.kEncoderDistancePerPulse);
+     //m_leftEncoder.setDistancePerPulse(DriveConstants.kEncoderDistancePerPulse);
+    // m_rightEncoder.setDistancePerPulse(DriveConstants.kEncoderDistancePerPulse);
    }
    public void curvatureDrive(double xSpeed, double zRotation, boolean isQuickTurn) {
     m_drive.curvatureDrive(xSpeed, zRotation, isQuickTurn);
@@ -60,9 +60,9 @@ public class DriveSubsystem extends SubsystemBase {
    /**
     * Resets the drive encoders to currently read a position of 0.
     */
-   public void resetEncoders() {
-     m_leftEncoder.reset();
-     m_rightEncoder.reset();
+   //public void resetEncoders() {
+    // m_leftEncoder.reset();
+    // m_rightEncoder.reset();
    }
  
    /**
@@ -70,8 +70,8 @@ public class DriveSubsystem extends SubsystemBase {
     *
     * @return the average of the two encoder readings
     */
-   public double getAverageEncoderDistance() {
-     return (m_leftEncoder.getDistance() + m_rightEncoder.getDistance()) / 2.0;
+   //public double getAverageEncoderDistance() {
+     //return (m_leftEncoder.getDistance() + m_rightEncoder.getDistance()) / 2.0;
    }
  
    /**
@@ -79,8 +79,8 @@ public class DriveSubsystem extends SubsystemBase {
     *
     * @return the left drive encoder
     */
-   public Encoder getLeftEncoder() {
-     return m_leftEncoder;
+  // public Encoder getLeftEncoder() {
+     //return m_leftEncoder;
    }
  
    /**
@@ -88,8 +88,8 @@ public class DriveSubsystem extends SubsystemBase {
     *
     * @return the right drive encoder
     */
-   public Encoder getRightEncoder() {
-     return m_rightEncoder;
+   //public Encoder getRightEncoder() {
+    // return m_rightEncoder;
    }
  
    /**
