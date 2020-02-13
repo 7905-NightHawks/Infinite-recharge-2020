@@ -60,13 +60,27 @@ public class RobotContainer {
       //  m_driverController.getX(GenericHID.Hand.kRight), m_driverController.getY(GenericHID.Hand.kLeft) < .05),
         //    m_robotDrive));
    // ;
+
+   double xSpeed = m_driverController.getRawAxis(OIConstants.kDriverControllerPortY);
+   double zRotation = m_driverController.getRawAxis(OIConstants.kDriverControllerPortX);
+   boolean isQuickTurn = xSpeed < .05;
+   
+   
+  
+
+
+   
+   
+
    m_robotDrive.setDefaultCommand(
         new RunCommand(() -> m_robotDrive
-        .curvatureDrive(m_driverController.getRawAxis(OIConstants.kDriverControllerPortY),
-       m_driverController.getRawAxis(OIConstants.kDriverControllerPortX), m_driverController.getRawAxis(OIConstants.kDriverControllerPortY) < .05),
+        .curvatureDrive(xSpeed, zRotation, isQuickTurn),
             m_robotDrive));
     ;
-            
+
+    
+    
+    
   }
   /**
    * Use this method to define your button->command mappings.  Buttons can be created by
