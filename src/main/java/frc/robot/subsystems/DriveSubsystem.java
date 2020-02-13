@@ -10,7 +10,7 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.kauailabs.navx.frc.AHRS;
 
-import edu.wpi.first.wpilibj.Encoder;
+//import edu.wpi.first.wpilibj.Encoder;
 
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -63,7 +63,7 @@ public class DriveSubsystem extends SubsystemBase {
    //public void resetEncoders() {
     // m_leftEncoder.reset();
     // m_rightEncoder.reset();
-   }
+   //}
  
    /**
     * Gets the average distance of the two encoders.
@@ -72,7 +72,7 @@ public class DriveSubsystem extends SubsystemBase {
     */
    //public double getAverageEncoderDistance() {
      //return (m_leftEncoder.getDistance() + m_rightEncoder.getDistance()) / 2.0;
-   }
+   //}
  
    /**
     * Gets the left drive encoder.
@@ -81,7 +81,7 @@ public class DriveSubsystem extends SubsystemBase {
     */
   // public Encoder getLeftEncoder() {
      //return m_leftEncoder;
-   }
+  // }
  
    /**
     * Gets the right drive encoder.
@@ -90,7 +90,7 @@ public class DriveSubsystem extends SubsystemBase {
     */
    //public Encoder getRightEncoder() {
     // return m_rightEncoder;
-   }
+   //}
  
    /**
     * Sets the max output of the drive.  Useful for scaling the drive to drive more slowly.
