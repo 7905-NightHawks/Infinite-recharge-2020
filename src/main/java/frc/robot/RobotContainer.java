@@ -61,6 +61,8 @@ public class RobotContainer {
         //    m_robotDrive));
    // ;
 
+  
+    
    double xSpeed = m_driverController.getRawAxis(OIConstants.kDriverControllerPortY);
    double zRotation = m_driverController.getRawAxis(OIConstants.kDriverControllerPortX);
    boolean isQuickTurn = xSpeed < .05;
@@ -87,7 +89,8 @@ public class RobotContainer {
     new JoystickButton(m_driverController, Button.kBumperRight.value)
         .whenPressed(() -> m_robotDrive.setMaxOutput(0.5))
         .whenReleased(() -> m_robotDrive.setMaxOutput(1));
-
+        
+        double xSpeed = m_driverController.getRawAxis(OIConstants.kDriverControllerPortY);
     // Stabilize robot to drive straight with gyro when left bumper is held
     new JoystickButton(m_driverController, Button.kBumperLeft.value).whenHeld(new PIDCommand(
       new PIDController(DriveConstants.kStabilizationP, DriveConstants.kStabilizationI,
@@ -96,8 +99,8 @@ public class RobotContainer {
         m_robotDrive::getTurnRate,
         // Setpoint is 0
         0,
-        // Pipe the output to the turning controls
-        output -> m_robotDrive.curvatureDrive(m_driverController.getY(GenericHID.Hand.kLeft), output, true),
+        // Pipe the output to the turning controls 
+        output -> m_robotDrive.curvatureDrive(xSpeed, output, true),
         // Require the robot drive
         m_robotDrive));
 
