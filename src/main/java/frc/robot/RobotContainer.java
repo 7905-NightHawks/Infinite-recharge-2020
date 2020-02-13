@@ -54,10 +54,16 @@ public class RobotContainer {
 
     // Configure default commands
     
-    m_robotDrive.setDefaultCommand(
+    //m_robotDrive.setDefaultCommand(
+      //  new RunCommand(() -> m_robotDrive
+      //  .curvatureDrive(m_driverController.getY(GenericHID.Hand.kLeft),
+      //  m_driverController.getX(GenericHID.Hand.kRight), m_driverController.getY(GenericHID.Hand.kLeft) < .05),
+        //    m_robotDrive));
+   // ;
+   m_robotDrive.setDefaultCommand(
         new RunCommand(() -> m_robotDrive
-        .curvatureDrive(m_driverController.getY(GenericHID.Hand.kLeft),
-        m_driverController.getX(GenericHID.Hand.kRight), m_driverController.getY(GenericHID.Hand.kLeft) < .05),
+        .curvatureDrive(m_driverController.getRawAxis(OIConstants.kDriverControllerPortY),
+       m_driverController.getRawAxis(OIConstants.kDriverControllerPortX), m_driverController.getRawAxis(OIConstants.kDriverControllerPortY) < .05),
             m_robotDrive));
     ;
             
