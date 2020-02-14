@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.DriveConstants;
-import frc.robot.Constants.OIConstants;
+
 
 public class DriveSubsystem extends SubsystemBase {
   private final SpeedControllerGroup m_leftMotors = 
@@ -56,12 +56,7 @@ public class DriveSubsystem extends SubsystemBase {
    public void curvatureDrive(double xSpeed, double zRotation, boolean isQuickTurn) {
     m_drive.curvatureDrive(xSpeed, zRotation, isQuickTurn);
 
-    if ((Math.abs(xSpeed) < OIConstants.Deadzone_Value)) {
-      xSpeed = 0; 
-    }
-    if ((Math.abs(zRotation) < OIConstants.Deadzone_Value)) {
-      zRotation = 0; 
-    }
+    
    
    }
   
