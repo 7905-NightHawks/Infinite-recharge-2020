@@ -53,8 +53,8 @@ public class DriveSubsystem extends SubsystemBase {
      //m_leftEncoder.setDistancePerPulse(DriveConstants.kEncoderDistancePerPulse);
     // m_rightEncoder.setDistancePerPulse(DriveConstants.kEncoderDistancePerPulse);
    }
-   //public void curvatureDrive(double move, double turn, boolean isQuickTurn) {
-    public void manualDrive(double move, double turn, boolean isQuickTurn) {
+   public void curvatureDrive(double move, double turn, boolean isQuickTurn) {
+    //public void manualDrive(double move, double turn, boolean isQuickTurn) {
     m_drive.curvatureDrive( move, turn, isQuickTurn);
 
     
