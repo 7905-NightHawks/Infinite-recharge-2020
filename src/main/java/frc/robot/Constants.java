@@ -59,7 +59,7 @@ public final class Constants {
         public static final int TriggerAxis = 3;
         public static final int kDriverControllerPortY = 1;
         public static final int kDriverControllerPortX = 4;
-        public static final double Deadzone_Value = 0.15;
+        public static final double Deadzone_Value = 0.25;
 
 
 

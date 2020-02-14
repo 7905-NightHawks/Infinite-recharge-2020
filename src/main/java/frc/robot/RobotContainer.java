@@ -63,15 +63,14 @@ public class RobotContainer {
 
   
     
-   double xSpeed = m_driverController.getRawAxis(OIConstants.kDriverControllerPortY);
-   double zRotation = m_driverController.getRawAxis(OIConstants.kDriverControllerPortX);
-   boolean isQuickTurn = xSpeed < .05;
+   
    
    
 
    m_robotDrive.setDefaultCommand(
         new RunCommand(() -> m_robotDrive
-        .curvatureDrive(xSpeed, zRotation, isQuickTurn),
+        .curvatureDrive(-m_driverController.getRawAxis(OIConstants.kDriverControllerPortY), m_driverController.getRawAxis(OIConstants.kDriverControllerPortX),
+        m_driverController.getRawAxis(OIConstants.kDriverControllerPortY) < .05),
             m_robotDrive));
     ;
 
