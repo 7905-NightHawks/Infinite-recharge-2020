@@ -37,7 +37,7 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   
   
-  private final DriveSubsystem m_robotDrive = new DriveSubsystem();
+  public DriveSubsystem m_robotDrive = new DriveSubsystem();
 
   // The driver's controller
   XboxController m_driverController = new XboxController(OIConstants.kDriverControllerPort);
@@ -53,30 +53,18 @@ public class RobotContainer {
     
 
     // Configure default commands
-    
-    //m_robotDrive.setDefaultCommand(
-      //  new RunCommand(() -> m_robotDrive
-      //  .curvatureDrive(m_driverController.getY(GenericHID.Hand.kLeft),
-      //  m_driverController.getX(GenericHID.Hand.kRight), m_driverController.getY(GenericHID.Hand.kLeft) < .05),
-        //    m_robotDrive));
-   // ;
-
-  
-    
-   
-   
-   
 
    m_robotDrive.setDefaultCommand(
         new RunCommand(() -> m_robotDrive
-        .curvatureDrive(-m_driverController.getRawAxis(OIConstants.kDriverControllerPortY), m_driverController.getRawAxis(OIConstants.kDriverControllerPortX),
+        .curvatureDrive(-m_driverController.getRawAxis(OIConstants.kDriverControllerPortY),
+         m_driverController.getRawAxis(OIConstants.kDriverControllerPortX),
         m_driverController.getRawAxis(OIConstants.kDriverControllerPortY) < .05),
             m_robotDrive));
-    ;
+    ;    
 
     
-    
-    
+
+
   }
   /**
    * Use this method to define your button->command mappings.  Buttons can be created by
@@ -89,7 +77,7 @@ public class RobotContainer {
         .whenPressed(() -> m_robotDrive.setMaxOutput(0.5))
         .whenReleased(() -> m_robotDrive.setMaxOutput(1));
         
-        double xSpeed = m_driverController.getRawAxis(OIConstants.kDriverControllerPortY);
+        
     // Stabilize robot to drive straight with gyro when left bumper is held
     new JoystickButton(m_driverController, Button.kBumperLeft.value).whenHeld(new PIDCommand(
       new PIDController(DriveConstants.kStabilizationP, DriveConstants.kStabilizationI,
@@ -99,15 +87,15 @@ public class RobotContainer {
         // Setpoint is 0
         0,
         // Pipe the output to the turning controls 
-        output -> m_robotDrive.curvatureDrive(xSpeed, output, true),
+        output -> m_robotDrive.curvatureDrive(-m_driverController.getRawAxis(OIConstants.kDriverControllerPortY), output, true),
         // Require the robot drive
         m_robotDrive));
 
-    // Turn to 90 degrees when the 'B' button is pressed, with a 5 second timeout
+    // Turn to 90 degrees when the 'B' button is pressed
     new JoystickButton(m_driverController, Button.kB.value)
         .whenPressed(new TurnToAngle(90, m_robotDrive));
 
-    // Turn to -90 degrees with a profile when the 'X' button is pressed, with a 5 second timeout
+    // Turn to -90 degrees with a profile when the 'X' button is pressed
     new JoystickButton(m_driverController, Button.kX.value)
         .whenPressed(new TurnToAngleProfiled(-90, m_robotDrive));
   }
