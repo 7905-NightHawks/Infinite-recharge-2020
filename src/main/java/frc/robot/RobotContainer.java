@@ -103,11 +103,11 @@ public class RobotContainer {
         // Require the robot drive
         m_robotDrive));
 
-    // Turn to 90 degrees when the 'X' button is pressed, with a 5 second timeout
+    // Turn to 90 degrees when the 'B' button is pressed, with a 5 second timeout
     new JoystickButton(m_driverController, Button.kB.value)
         .whenPressed(new TurnToAngle(90, m_robotDrive));
 
-    // Turn to -90 degrees with a profile when the 'A' button is pressed, with a 5 second timeout
+    // Turn to -90 degrees with a profile when the 'X' button is pressed, with a 5 second timeout
     new JoystickButton(m_driverController, Button.kX.value)
         .whenPressed(new TurnToAngleProfiled(-90, m_robotDrive));
   }
