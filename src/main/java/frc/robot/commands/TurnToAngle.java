@@ -31,7 +31,7 @@ public class TurnToAngle extends PIDCommand {
         // Set reference to target
         targetAngleDegrees,
         // Pipe output to turn robot
-        output -> drive.curvatureDrive(0, output, true),
+        output -> drive.manualDrive(0, output, true),
         // Require the drive
         drive);
 
