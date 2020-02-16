@@ -71,26 +71,6 @@ public class RobotContainer {
     } 
       
     
-   //m_driverController.getRawAxis(OIConstants.kDriverControllerPortY) < .05)
- //  if(Math.abs(m_driverController.getRawAxis(1)) < OIConstants.kDeadzone_Value){
- //   m_robotDrive.setDefaultCommand(
-  //    new RunCommand(() -> m_robotDrive
-  //    .curvatureDrive(0,
-  ///    m_driverController.getRawAxis(OIConstants.kDriverControllerPortX),
-   //  m_driverController.getRawAxis(OIConstants.kDriverControllerPortY) < .05),
-  //       m_robotDrive));
-   // }
-    
-   // else{
-    //  m_robotDrive.setDefaultCommand(
-     //   new RunCommand(() -> m_robotDrive
-    //    .curvatureDrive(-m_driverController.getRawAxis(OIConstants.kDriverControllerPortY),
-     //    m_driverController.getRawAxis(OIConstants.kDriverControllerPortX),
-    //   m_driverController.getRawAxis(OIConstants.kDriverControllerPortY) < .05),
-       //    m_robotDrive));
-   // }
-    
-    
 
   }
   /**
