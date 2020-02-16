@@ -22,7 +22,7 @@ public final class Constants {
 
     public static final class DriveConstants {
         public static final int kLeftMotor1Port = 0;
-        public static final int kLeftMotor2Port = 1;
+        public static final int kLeftMotor2Port = 2;
         public static final int kRightMotor1Port = 3;
         public static final int kRightMotor2Port = 12;
     
@@ -39,7 +39,7 @@ public final class Constants {
     
         public static final boolean kGyroReversed = false;
     
-        public static final double kStabilizationP = 1;
+        public static final double kStabilizationP = .03;
         public static final double kStabilizationI = 0.5;
         public static final double kStabilizationD = 0;
     
@@ -47,11 +47,11 @@ public final class Constants {
         public static final double kTurnI = 0;
         public static final double kTurnD = 0;
     
-        public static final double kMaxTurnRateDegPerS = 75;
-        public static final double kMaxTurnAccelerationDegPerSSquared = 200;
+        public static final double kMaxTurnRateDegPerS = 15;
+        public static final double kMaxTurnAccelerationDegPerSSquared = 50;
     
-        public static final double kTurnToleranceDeg = 5;
-        public static final double kTurnRateToleranceDegPerS = 10; // degrees per second
+        public static final double kTurnToleranceDeg = 30;
+        public static final double kTurnRateToleranceDegPerS = 30; // degrees per second
       }
     
       public static final class OIConstants {
@@ -59,7 +59,7 @@ public final class Constants {
         public static final int TriggerAxis = 3;
         public static final int kDriverControllerPortY = 1;
         public static final int kDriverControllerPortX = 4;
-        public static final double Deadzone_Value = 0.15;
+        public static final double kDeadzone_Value = 0.15;
         public static final double Precision_Move_Slow = 0.5;
         public static final double Precision_Move_Norm = 0.7;
         public static final double Precision_Move_Fast = 1.0;

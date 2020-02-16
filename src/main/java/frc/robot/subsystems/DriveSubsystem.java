@@ -10,13 +10,16 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.kauailabs.navx.frc.AHRS;
 
+import edu.wpi.first.wpilibj.GenericHID;
 //import edu.wpi.first.wpilibj.Encoder;
-
+import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.DriveConstants;
+import frc.robot.Constants.OIConstants;
 
 
 public class DriveSubsystem extends SubsystemBase {
@@ -43,7 +46,8 @@ public class DriveSubsystem extends SubsystemBase {
         //          DriveConstants.kRightEncoderReversed);
 
   // The gyro sensor
-  private final AHRS m_gyro = new AHRS();
+   
+  private final AHRS m_gyro = new AHRS(SPI.Port.kMXP);
 
   /**
    * Creates a new DriveSubsystem.
@@ -53,11 +57,13 @@ public class DriveSubsystem extends SubsystemBase {
      //m_leftEncoder.setDistancePerPulse(DriveConstants.kEncoderDistancePerPulse);
     // m_rightEncoder.setDistancePerPulse(DriveConstants.kEncoderDistancePerPulse);
    }
+   
+   
    public void curvatureDrive(double move, double turn, boolean isQuickTurn) {
     //public void manualDrive(double move, double turn, boolean isQuickTurn) {
-    m_drive.curvatureDrive( move, turn, isQuickTurn);
+    m_drive.curvatureDrive( move, turn, isQuickTurn );
 
-    
+  
    
    }
   
@@ -65,6 +71,7 @@ public class DriveSubsystem extends SubsystemBase {
    /**
     * Resets the drive encoders to currently read a position of 0.
     */
+
    //public void resetEncoders() {
     // m_leftEncoder.reset();
     // m_rightEncoder.reset();
@@ -105,7 +112,7 @@ public class DriveSubsystem extends SubsystemBase {
    public void setMaxOutput(double maxOutput) {
      m_drive.setMaxOutput(maxOutput);
    }
- 
+  
    /**
     * Zeroes the heading of the robot.
     */
@@ -121,7 +128,12 @@ public class DriveSubsystem extends SubsystemBase {
    public double getHeading() {
      return Math.IEEEremainder(m_gyro.getAngle(), 360) * (DriveConstants.kGyroReversed ? -1.0 : 1.0);
    }
- 
+
+   XboxController m_driverController = new XboxController(OIConstants.kDriverControllerPort);
+
+   public double getSpeed(){
+     return -m_driverController.getY(GenericHID.Hand.kLeft);
+   }
    /**
     * Returns the turn rate of the robot.
     *

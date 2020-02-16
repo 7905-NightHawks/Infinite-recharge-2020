@@ -43,6 +43,7 @@ public class RobotContainer {
   // The driver's controller
   XboxController m_driverController = new XboxController(OIConstants.kDriverControllerPort);
 
+  
 
 
   /**
@@ -57,14 +58,32 @@ public class RobotContainer {
 
    m_robotDrive.setDefaultCommand(
        new RunCommand(() -> m_robotDrive
-       .curvatureDrive(-m_driverController.getRawAxis(OIConstants.kDriverControllerPortY),
-        m_driverController.getRawAxis(OIConstants.kDriverControllerPortX),
-      m_driverController.getRawAxis(OIConstants.kDriverControllerPortY) < .05),
-          m_robotDrive));
+    .curvatureDrive(-m_driverController.getY(GenericHID.Hand.kLeft),
+      m_driverController.getX(GenericHID.Hand.kRight),
+      //!(Math.abs(m_robotDrive.getSpeed()) > 0.15) && 
+       Math.abs(m_robotDrive.getSpeed()) < 0.1),
+        m_robotDrive));
    ;    
-
+   //m_driverController.getRawAxis(OIConstants.kDriverControllerPortY) < .05)
+ //  if(Math.abs(m_driverController.getRawAxis(1)) < OIConstants.kDeadzone_Value){
+ //   m_robotDrive.setDefaultCommand(
+  //    new RunCommand(() -> m_robotDrive
+  //    .curvatureDrive(0,
+  ///    m_driverController.getRawAxis(OIConstants.kDriverControllerPortX),
+   //  m_driverController.getRawAxis(OIConstants.kDriverControllerPortY) < .05),
+  //       m_robotDrive));
+   // }
     
-
+   // else{
+    //  m_robotDrive.setDefaultCommand(
+     //   new RunCommand(() -> m_robotDrive
+    //    .curvatureDrive(-m_driverController.getRawAxis(OIConstants.kDriverControllerPortY),
+     //    m_driverController.getRawAxis(OIConstants.kDriverControllerPortX),
+    //   m_driverController.getRawAxis(OIConstants.kDriverControllerPortY) < .05),
+       //    m_robotDrive));
+   // }
+    
+    
 
   }
   /**
@@ -77,16 +96,22 @@ public class RobotContainer {
     new JoystickButton(m_driverController, Button.kBumperRight.value)
         .whenPressed(() -> m_robotDrive.setMaxOutput(0.5))
         .whenReleased(() -> m_robotDrive.setMaxOutput(1));
+
+    
+    
+
+
+    
         
         
     // Stabilize robot to drive straight with gyro when left bumper is held
-    new JoystickButton(m_driverController, Button.kBumperLeft.value).whenHeld(new PIDCommand(
+   new JoystickButton(m_driverController, Button.kBumperLeft.value).whenHeld(new PIDCommand(
       new PIDController(DriveConstants.kStabilizationP, DriveConstants.kStabilizationI,
-                          DriveConstants.kStabilizationD),
+                         DriveConstants.kStabilizationD),
         // Close the loop on the turn rate
-        m_robotDrive::getTurnRate,
+       m_robotDrive::getTurnRate,
         // Setpoint is 0
-        0,
+       0,
         // Pipe the output to the turning controls 
         output -> m_robotDrive.curvatureDrive(-m_driverController.getRawAxis(OIConstants.kDriverControllerPortY), output, true),
         // Require the robot drive
