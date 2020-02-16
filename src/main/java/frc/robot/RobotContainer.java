@@ -58,12 +58,19 @@ public class RobotContainer {
 
    m_robotDrive.setDefaultCommand(
        new RunCommand(() -> m_robotDrive
-    .curvatureDrive(-m_driverController.getY(GenericHID.Hand.kLeft),
-      m_driverController.getX(GenericHID.Hand.kRight),
+    .curvatureDrive(-Math.pow(m_robotDrive.getSpeed(), 2),
+     Math.pow(m_driverController.getX(GenericHID.Hand.kRight), 2),
       //!(Math.abs(m_robotDrive.getSpeed()) > 0.15) && 
        Math.abs(m_robotDrive.getSpeed()) < 0.1),
         m_robotDrive));
    ;    
+
+    if (Math.abs(m_robotDrive.getSpeed()) < OIConstants.kDeadzone_Value) {
+      m_robotDrive.curvatureDrive(0, m_driverController.getX(GenericHID.Hand.kRight), true);
+      
+    } 
+      
+    
    //m_driverController.getRawAxis(OIConstants.kDriverControllerPortY) < .05)
  //  if(Math.abs(m_driverController.getRawAxis(1)) < OIConstants.kDeadzone_Value){
  //   m_robotDrive.setDefaultCommand(
