@@ -68,41 +68,7 @@ public class DriveSubsystem extends SubsystemBase {
    }
   
    
-   /**
-    * Resets the drive encoders to currently read a position of 0.
-    */
-
-   //public void resetEncoders() {
-    // m_leftEncoder.reset();
-    // m_rightEncoder.reset();
-   //}
- 
-   /**
-    * Gets the average distance of the two encoders.
-    *
-    * @return the average of the two encoder readings
-    */
-   //public double getAverageEncoderDistance() {
-     //return (m_leftEncoder.getDistance() + m_rightEncoder.getDistance()) / 2.0;
-   //}
- 
-   /**
-    * Gets the left drive encoder.
-    *
-    * @return the left drive encoder
-    */
-  // public Encoder getLeftEncoder() {
-     //return m_leftEncoder;
-  // }
- 
-   /**
-    * Gets the right drive encoder.
-    *
-    * @return the right drive encoder
-    */
-   //public Encoder getRightEncoder() {
-    // return m_rightEncoder;
-   //}
+  
  
    /**
     * Sets the max output of the drive.  Useful for scaling the drive to drive more slowly.
