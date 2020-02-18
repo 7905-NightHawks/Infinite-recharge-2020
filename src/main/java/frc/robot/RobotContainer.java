@@ -64,7 +64,7 @@ public class RobotContainer {
        Math.abs(m_robotDrive.getSpeed()) < 0.1),
         m_robotDrive));
    ;    
-
+    // set deadzone for drive
     if (Math.abs(m_robotDrive.getSpeed()) < OIConstants.kDeadzone_Value) {
       m_robotDrive.curvatureDrive(0, m_driverController.getX(GenericHID.Hand.kRight), true);
       
@@ -100,7 +100,7 @@ public class RobotContainer {
         // Setpoint is 0
        0,
         // Pipe the output to the turning controls 
-        output -> m_robotDrive.curvatureDrive(-m_driverController.getRawAxis(OIConstants.kDriverControllerPortY), output, true),
+        output -> m_robotDrive.curvatureDrive(-Math.pow(m_robotDrive.getSpeed(), 2), output, true),
         // Require the robot drive
         m_robotDrive));
 

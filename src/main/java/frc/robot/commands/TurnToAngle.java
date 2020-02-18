@@ -13,6 +13,7 @@ import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.Constants.DriveConstants;
 
 
+
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/latest/docs/software/commandbased/convenience-features.html
@@ -31,10 +32,18 @@ public class TurnToAngle extends PIDCommand {
         // Set reference to target
         targetAngleDegrees,
         // Pipe output to turn robot
-        output -> drive.curvatureDrive(0, output, true),
+        output -> {
+          if (output > 0) {
+              drive.curvatureDrive(0, output + DriveConstants.kTurnFriction, true);
+          } else if (output < 0) {
+              drive.curvatureDrive(0, output - DriveConstants.kTurnFriction, true);
+          } else {
+              drive.curvatureDrive(0, output, true);
+          }
+        },
         // Require the drive
         drive);
-
+        
     // Set the controller to be continuous (because it is an angle controller)
     getController().enableContinuousInput(-180, 180);
     // Set the controller tolerance - the delta tolerance ensures the robot is stationary at the
