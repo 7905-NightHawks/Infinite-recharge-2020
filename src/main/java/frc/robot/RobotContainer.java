@@ -10,13 +10,10 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController.Button;
-import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
-import edu.wpi.first.wpilibj2.command.PIDCommand;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.commands.TurnToAngle;
 import frc.robot.commands.TurnToAngleProfiled;
@@ -55,20 +52,20 @@ public class RobotContainer {
     
 
     // Configure default commands
+    
+
+      
+    
+  
 
    m_robotDrive.setDefaultCommand(
        new RunCommand(() -> m_robotDrive
-    .curvatureDrive(-Math.pow(m_robotDrive.getSpeed(), 2),
-     Math.pow(m_driverController.getX(GenericHID.Hand.kRight), 2),
-      //!(Math.abs(m_robotDrive.getSpeed()) > 0.15) && 
+    .curvatureDrive(m_robotDrive.getSpeed(),
+     m_driverController.getX(GenericHID.Hand.kRight),
        Math.abs(m_robotDrive.getSpeed()) < 0.1),
         m_robotDrive));
    ;    
-    // set deadzone for drive
-    if (Math.abs(m_robotDrive.getSpeed()) < OIConstants.kDeadzone_Value) {
-      m_robotDrive.curvatureDrive(0, m_driverController.getX(GenericHID.Hand.kRight), true);
-      
-    } 
+    
       
     
 
@@ -80,29 +77,16 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    new JoystickButton(m_driverController, Button.kBumperRight.value)
+    new JoystickButton(m_driverController, Button.kBumperLeft.value)
         .whenPressed(() -> m_robotDrive.setMaxOutput(0.5))
-        .whenReleased(() -> m_robotDrive.setMaxOutput(1));
-
-    
-    
+        .whenReleased(() -> m_robotDrive.setMaxOutput(0.7));
 
 
+    new JoystickButton(m_driverController, Button.kBumperRight.value)
+        .whenPressed(() -> m_robotDrive.setMaxOutput(1.0))
+        .whenReleased(() -> m_robotDrive.setMaxOutput(0.7));
     
-        
-        
-    // Stabilize robot to drive straight with gyro when left bumper is held
-   new JoystickButton(m_driverController, Button.kBumperLeft.value).whenHeld(new PIDCommand(
-      new PIDController(DriveConstants.kStabilizationP, DriveConstants.kStabilizationI,
-                         DriveConstants.kStabilizationD),
-        // Close the loop on the turn rate
-       m_robotDrive::getTurnRate,
-        // Setpoint is 0
-       0,
-        // Pipe the output to the turning controls 
-        output -> m_robotDrive.curvatureDrive(-Math.pow(m_robotDrive.getSpeed(), 2), output, true),
-        // Require the robot drive
-        m_robotDrive));
+  
 
     // Turn to 90 degrees when the 'B' button is pressed
     new JoystickButton(m_driverController, Button.kB.value)

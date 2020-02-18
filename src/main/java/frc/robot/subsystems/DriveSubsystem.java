@@ -53,11 +53,10 @@ public class DriveSubsystem extends SubsystemBase {
 
     m_drive.curvatureDrive( move, turn, isQuickTurn );
 
-  
    
    }
-  
    
+  
   
  
    /**
@@ -68,6 +67,7 @@ public class DriveSubsystem extends SubsystemBase {
    public void setMaxOutput(double maxOutput) {
      m_drive.setMaxOutput(maxOutput);
    }
+  
   
    /**
     * Zeroes the heading of the robot.
@@ -90,6 +90,8 @@ public class DriveSubsystem extends SubsystemBase {
    public double getSpeed(){
      return -m_driverController.getY(GenericHID.Hand.kLeft);
    }
+   
+   
    /**
     * Returns the turn rate of the robot.
     *

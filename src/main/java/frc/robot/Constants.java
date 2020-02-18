@@ -39,8 +39,8 @@ public final class Constants {
     
         public static final boolean kGyroReversed = false;
     
-        public static final double kStabilizationP = .004;
-        public static final double kStabilizationI = 0.5;
+        public static final double kStabilizationP = .03;
+        public static final double kStabilizationI = 0;
         public static final double kStabilizationD = 0;
         public static final double kTurnFriction = 0.2;
     
@@ -51,7 +51,7 @@ public final class Constants {
         public static final double kMaxTurnRateDegPerS = 100;
         public static final double kMaxTurnAccelerationDegPerSSquared = 300;
     
-        public static final double kTurnToleranceDeg = 5;
+        public static final double kTurnToleranceDeg = 2.0f;
         public static final double kTurnRateToleranceDegPerS = 10; // degrees per second
       }
     
@@ -60,7 +60,7 @@ public final class Constants {
         public static final int TriggerAxis = 3;
         public static final int kDriverControllerPortY = 1;
         public static final int kDriverControllerPortX = 4;
-        public static final double kDeadzone_Value = 0.15;
+        public static final double kDeadzone_Value = 0.2;
         public static final double Precision_Move_Slow = 0.5;
         public static final double Precision_Move_Norm = 0.7;
         public static final double Precision_Move_Fast = 1.0;
