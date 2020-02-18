@@ -35,15 +35,7 @@ public class DriveSubsystem extends SubsystemBase {
   // The robot's drive
   private final DifferentialDrive m_drive = new DifferentialDrive(m_leftMotors, m_rightMotors);
 
-  // The left-side drive encoder
- // private final Encoder m_leftEncoder =
-  //   new Encoder(DriveConstants.kLeftEncoderPorts[0], DriveConstants.kLeftEncoderPorts[1],
-    //              DriveConstants.kLeftEncoderReversed);
 
-  // The right-side drive encoder
-  //private final Encoder m_rightEncoder =
-    //  new Encoder(DriveConstants.kRightEncoderPorts[0], DriveConstants.kRightEncoderPorts[1],
-        //          DriveConstants.kRightEncoderReversed);
 
   // The gyro sensor
    
@@ -53,14 +45,12 @@ public class DriveSubsystem extends SubsystemBase {
    * Creates a new DriveSubsystem.
    */
   public DriveSubsystem() {
-     // Sets the distance per pulse for the encoders
-     //m_leftEncoder.setDistancePerPulse(DriveConstants.kEncoderDistancePerPulse);
-    // m_rightEncoder.setDistancePerPulse(DriveConstants.kEncoderDistancePerPulse);
+     
    }
    
    
    public void curvatureDrive(double move, double turn, boolean isQuickTurn) {
-    //public void manualDrive(double move, double turn, boolean isQuickTurn) {
+
     m_drive.curvatureDrive( move, turn, isQuickTurn );
 
   
