@@ -10,6 +10,7 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.kauailabs.navx.frc.AHRS;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.GenericHID;
 //import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SPI;
@@ -38,8 +39,9 @@ public class DriveSubsystem extends SubsystemBase {
 
 
   // The gyro sensor
+  private AHRS ahrs;
    
-  private final AHRS m_gyro = new AHRS(SPI.Port.kMXP);
+  
 
   /**
    * Creates a new DriveSubsystem.
@@ -52,11 +54,33 @@ public class DriveSubsystem extends SubsystemBase {
    public void curvatureDrive(double move, double turn, boolean isQuickTurn) {
 
     m_drive.curvatureDrive( move, turn, isQuickTurn );
-
-   
+   }
+   public void setDeadband​(double deadband){
+   deadband = 0.1;
    }
    
-  
+   
+   {
+
+
+    try {
+      /* Communicate w/navX-MXP via the MXP SPI Bus. */
+      /*
+       * Alternatively: I2C.Port.kMXP, SerialPort.Port.kMXP or SerialPort.Port.kUSB
+       */
+      /*
+       * See http://navx-mxp.kauailabs.com/guidance/selecting-an-interface/ for
+       * details.
+       */
+      ahrs = new AHRS(SPI.Port.kMXP);
+    } catch (RuntimeException ex) {
+      DriverStation.reportError("Error instantiating navX-MXP: " + ex.getMessage(), true);
+    }
+
+    ahrs.reset();
+  }
+   
+   
   
  
    /**
@@ -73,7 +97,7 @@ public class DriveSubsystem extends SubsystemBase {
     * Zeroes the heading of the robot.
     */
    public void zeroHeading() {
-     m_gyro.reset();
+    ahrs.reset();
    }
  
    /**
@@ -82,7 +106,7 @@ public class DriveSubsystem extends SubsystemBase {
     * @return the robot's heading in degrees, from 180 to 180
     */
    public double getHeading() {
-     return Math.IEEEremainder(m_gyro.getAngle(), 360) * (DriveConstants.kGyroReversed ? -1.0 : 1.0);
+     return Math.IEEEremainder(ahrs.getAngle(), 360) * (DriveConstants.kGyroReversed ? -1.0 : 1.0);
    }
 
    XboxController m_driverController = new XboxController(OIConstants.kDriverControllerPort);
@@ -98,9 +122,17 @@ public class DriveSubsystem extends SubsystemBase {
     * @return The turn rate of the robot, in degrees per second
     */
    public double getTurnRate() {
-     return m_gyro.getRate() * (DriveConstants.kGyroReversed ? -1.0 : 1.0);
+     return ahrs.getRate() * (DriveConstants.kGyroReversed ? -1.0 : 1.0);
    }
- 
+
+
+   public void setAHRSAdjustment(double adj) {
+		ahrs.setAngleAdjustment(adj);
+  }
+  
+  public double getAHRSGyroAngle() {
+		return ahrs.getAngle();
+	}
 
   
 

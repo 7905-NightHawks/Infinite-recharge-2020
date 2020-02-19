@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.OIConstants;
 import frc.robot.commands.TurnToAngle;
 import frc.robot.commands.TurnToAngleProfiled;
+import frc.robot.commands.TurntoAngleNOPID;
 import frc.robot.subsystems.DriveSubsystem;
 
 
@@ -65,11 +66,10 @@ public class RobotContainer {
        Math.abs(m_robotDrive.getSpeed()) < 0.1),
         m_robotDrive));
    ;    
+  
     
-      
-    
-
   }
+  
   /**
    * Use this method to define your button->command mappings.  Buttons can be created by
    * instantiating a {@link GenericHID} or one of its subclasses ({@link
@@ -95,6 +95,9 @@ public class RobotContainer {
     // Turn to -90 degrees with a profile when the 'X' button is pressed
     new JoystickButton(m_driverController, Button.kX.value)
         .whenPressed(new TurnToAngleProfiled(-90, m_robotDrive));
+
+    new JoystickButton(m_driverController, Button.kA.value)
+    .whenPressed(new TurntoAngleNOPID(.3, 0));
   }
   
 
