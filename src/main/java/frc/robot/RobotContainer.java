@@ -72,12 +72,11 @@ public class RobotContainer {
   private void configureButtonBindings() {
     new JoystickButton(m_driverController, Button.kBumperLeft.value)
         .whenPressed(() -> m_robotDrive.setMaxOutput(0.5))
-        .whenReleased(() -> m_robotDrive.setMaxOutput(0.7));
+        .whenReleased(() -> m_robotDrive.setMaxOutput(1));
+        
 
 
-    new JoystickButton(m_driverController, Button.kBumperRight.value)
-        .whenPressed(() -> m_robotDrive.setMaxOutput(1.0))
-        .whenReleased(() -> m_robotDrive.setMaxOutput(0.7));
+    
     
   
 

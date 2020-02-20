@@ -42,7 +42,7 @@ public class TurntoAngleNOPID extends CommandBase {
   @Override
   public void execute() {
     double currentAngle = Robot.DriveSubsystem.getAHRSGyroAngle();
-    // SmartDashboard.putNumber("Gyro: ", currentAngle);
+    
     if (Math.abs(goalAngle - currentAngle) < tolerance) { // if within tolerance
       Robot.DriveSubsystem.curvatureDrive(0, 0, true);
       isDone = true;
