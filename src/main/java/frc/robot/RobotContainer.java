@@ -56,7 +56,7 @@ public class RobotContainer {
 
     m_robotDrive.setDefaultCommand(new RunCommand(
         () -> m_robotDrive.curvatureDrive(m_robotDrive.getSpeed(), m_driverController.getX(GenericHID.Hand.kRight),
-            Math.abs(m_robotDrive.getSpeed()) < 0.15 ||  RightTrigger.get()),
+      Math.abs(m_robotDrive.getSpeed()) < 0.15 ||  RightTrigger.get()), // quick turn if below set speed or if trigger is pressed
         m_robotDrive));
    ;    
    
