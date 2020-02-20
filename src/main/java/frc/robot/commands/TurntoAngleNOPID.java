@@ -18,7 +18,7 @@ public class TurntoAngleNOPID extends CommandBase {
     private double goalAngle = 0.0;
     private boolean isDone = false;
     private double speed;
-    private double tolerance = 3;
+    private double tolerance = 5;
     // private double currentAngle;
   
     public TurntoAngleNOPID(double speed, double givenAngle) {
@@ -59,7 +59,7 @@ public class TurntoAngleNOPID extends CommandBase {
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {
+  public void end(boolean interrupted) {    
     Robot.DriveSubsystem.curvatureDrive(0, 0, true);
     isDone = true;
   }

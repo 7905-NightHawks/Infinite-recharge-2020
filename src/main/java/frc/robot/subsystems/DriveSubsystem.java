@@ -36,9 +36,8 @@ public class DriveSubsystem extends SubsystemBase {
   // The robot's drive
   private final DifferentialDrive m_drive = new DifferentialDrive(m_leftMotors, m_rightMotors);
 
-public void setDeadband(double deadband) {
-  deadband = OIConstants.kDeadzone_Value;
-}
+
+
 
   // The gyro sensor
   private AHRS ahrs;

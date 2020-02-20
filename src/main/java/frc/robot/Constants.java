@@ -60,7 +60,7 @@ public final class Constants {
         public static final int TriggerAxis = 3;
         public static final int kDriverControllerPortY = 1;
         public static final int kDriverControllerPortX = 4;
-        public static final double kDeadzone_Value = 0.2;
+        public static final double kDeadzone_Value = 0.1;
         public static final double Precision_Move_Slow = 0.5;
         public static final double Precision_Move_Norm = 0.7;
         public static final double Precision_Move_Fast = 1.0;

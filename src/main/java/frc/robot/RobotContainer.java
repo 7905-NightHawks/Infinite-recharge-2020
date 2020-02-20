@@ -15,8 +15,6 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.OIConstants;
-import frc.robot.commands.TurnToAngle;
-import frc.robot.commands.TurnToAngleProfiled;
 import frc.robot.commands.TurntoAngleNOPID;
 import frc.robot.subsystems.DriveSubsystem;
 
@@ -35,38 +33,33 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   
   
+
   public static DriveSubsystem m_robotDrive = new DriveSubsystem();
-  
 
   // The driver's controller
   XboxController m_driverController = new XboxController(OIConstants.kDriverControllerPort);
 
-  
-
-
   /**
-   * The container for the robot.  Contains subsystems, OI devices, and commands.
+   * The container for the robot. Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
-    
+
+    XBoxTrigger RightTrigger;
+
+    RightTrigger = new XBoxTrigger(m_driverController, 3);
+
+
 
     // Configure default commands
-    
 
-      
-    
-  
-
-   m_robotDrive.setDefaultCommand(
-       new RunCommand(() -> m_robotDrive
-    .curvatureDrive(m_robotDrive.getSpeed(),
-     m_driverController.getX(GenericHID.Hand.kRight),
-       Math.abs(m_robotDrive.getSpeed()) < 0.1),
+    m_robotDrive.setDefaultCommand(new RunCommand(
+        () -> m_robotDrive.curvatureDrive(m_robotDrive.getSpeed(), m_driverController.getX(GenericHID.Hand.kRight),
+            Math.abs(m_robotDrive.getSpeed()) < 0.15 ||  RightTrigger.get()),
         m_robotDrive));
    ;    
-  
+   
     
   }
   
@@ -89,15 +82,15 @@ public class RobotContainer {
   
 
     // Turn to 90 degrees when the 'B' button is pressed
-    new JoystickButton(m_driverController, Button.kB.value)
-        .whenPressed(new TurnToAngle(90, m_robotDrive));
+    new JoystickButton(m_driverController, Button.kA.value)
+    .whenPressed(new TurntoAngleNOPID(.3, 90));
 
     // Turn to -90 degrees with a profile when the 'X' button is pressed
-    new JoystickButton(m_driverController, Button.kX.value)
-        .whenPressed(new TurnToAngleProfiled(-90, m_robotDrive));
+    new JoystickButton(m_driverController, Button.kA.value)
+    .whenPressed(new TurntoAngleNOPID(.3, 270));
 
     new JoystickButton(m_driverController, Button.kA.value)
-    .whenPressed(new TurntoAngleNOPID(.3, 0));
+    .whenPressed(new TurntoAngleNOPID(.3, 180));
   }
   
 
