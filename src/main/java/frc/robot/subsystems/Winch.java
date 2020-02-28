@@ -7,15 +7,23 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants.ClimbConstants;
 
 public class Winch extends SubsystemBase {
-  /**
-   * Creates a new Winch.
-   */
+  
+  private final WPI_VictorSPX WinchMotor = new WPI_VictorSPX(ClimbConstants.WinchMotor);
+
   public Winch() {
 
   }
+
+  public void useOutput(double output){
+    WinchMotor.set(output);
+  }
+
 
   @Override
   public void periodic() {
