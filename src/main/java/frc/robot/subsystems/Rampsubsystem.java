@@ -13,18 +13,18 @@ import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.RampConstants;
 
-public class Ramp extends SubsystemBase {
+public class Rampsubsystem extends SubsystemBase {
 
   private final WPI_VictorSPX TopRampMotor = new WPI_VictorSPX(RampConstants.TopRampMotor);
   private final WPI_VictorSPX BottomRampMotor = new WPI_VictorSPX(RampConstants.BottomRampMotor);
 
   private final SpeedControllerGroup m_RampMotors = new SpeedControllerGroup(TopRampMotor, BottomRampMotor);
 
-  public Ramp() {
+  public Rampsubsystem() {
 
   }
 
-public void useOutput(double output) {
+public void setOutput(double output) {
   m_RampMotors.set(output);
 }
 

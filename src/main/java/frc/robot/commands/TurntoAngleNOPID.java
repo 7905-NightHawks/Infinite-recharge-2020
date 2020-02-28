@@ -7,6 +7,7 @@
 
 package frc.robot.commands;
 
+
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 
@@ -14,22 +15,23 @@ public class TurntoAngleNOPID extends CommandBase {
   /**
    * Creates a new TurntoAngleNOPID.
    */
-  
-    private double goalAngle = 0.0;
-    private boolean isDone = false;
-    private double speed;
-    private double tolerance = 5;
-    // private double currentAngle;
-  
-    public TurntoAngleNOPID(double speed, double givenAngle) {
-      // Use requires() here to declare subsystem dependencies
-      // eg. requires(chassis);
-      addRequirements(RobotContainer.DriveSubsystem);
-      goalAngle = givenAngle;
-      this.speed = speed;
-      isDone = false;
-    }
-  
+
+  private double goalAngle = 0.0;
+  private boolean isDone = false;
+  private double speed;
+  private double tolerance = 5;
+  // private double currentAngle;
+
+  public TurntoAngleNOPID(double speed, double givenAngle) {
+    // Use requires() here to declare subsystem dependencies
+    // eg. requires(chassis);
+    addRequirements(RobotContainer.DriveSubsystem);
+    goalAngle = givenAngle;
+    this.speed = speed;
+    isDone = false;
+  }
+
+ 
 
   // Called when the command is initially scheduled.
   @Override

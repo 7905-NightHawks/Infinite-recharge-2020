@@ -51,12 +51,22 @@ public final class Constants {
         public static final int kDriverControllerPortX = 4;
         public static final double kDeadzone_Value = 0.1;
         public static final int kOperatorControllerPort = 0;
+        public static final int kOperatorControllerRightBumper = 6;
+        public static final int kOperatorControllerLeftBumper = 5;
+        public static final int kOperatorControllerY = 4;
+        public static final int kOperatorControllerX = 3;
+        public static final int kOperatorControllerB = 2;
+        public static final int kOperatorControllerA = 1;
+        public static final int kOperatorControllerStop = 7;
+        public static final int kOperatorControllerStart = 8;
+        public static final int kOperatorControllerTriggerAxis = 3;
         
       
       }
       public static final class ClimbConstants {
         public static final int ElevatorMotor = 13;
         public static final int WinchMotor = 6;
+        public static final double ElevatorSpeed = 0.5;
       
       }
 
@@ -69,7 +79,10 @@ public final class Constants {
         public static final int BottomRampMotor = 1;
 
       }
-    
+    public static final class AutoConstants {
+      public static final double simpleDriveForwardPower = 0.5;
+      public static final double simpleDriveForwardtime = 3000;
+    }
 
 
     }

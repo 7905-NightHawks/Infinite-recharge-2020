@@ -19,7 +19,7 @@ public class Elevator extends SubsystemBase {
   public Elevator() {
 
   }
-public void useOutput(double output) {
+public void setOutput(double output) {
   ElevatorMotor.set(output);
 }
 

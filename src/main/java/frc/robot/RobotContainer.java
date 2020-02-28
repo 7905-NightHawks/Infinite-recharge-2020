@@ -8,15 +8,24 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController.Button;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.Constants.AutoConstants;
 import frc.robot.Constants.OIConstants;
+import frc.robot.commands.DriveForwardXForY;
 import frc.robot.commands.TurntoAngleNOPID;
 import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.Elevator;
+import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Rampsubsystem;
+import frc.robot.subsystems.Winch;
 
 
 
@@ -32,12 +41,24 @@ import frc.robot.subsystems.DriveSubsystem;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   public static DriveSubsystem DriveSubsystem = new DriveSubsystem();
-  
+  public static Elevator Elevator = new Elevator();
+  public static Intake Intake = new Intake();
+  public static Rampsubsystem Ramp = new Rampsubsystem();
+  public static Winch Winch = new Winch();
 
+  private final Command OffInitiationLine = new DriveForwardXForY(AutoConstants.simpleDriveForwardPower, AutoConstants.simpleDriveForwardtime);
+
+ 
+  SendableChooser<Command> m_chooser = new SendableChooser<>();
+ 
   public static DriveSubsystem m_robotDrive = new DriveSubsystem();
 
   // The driver's controller
   XboxController m_driverController = new XboxController(OIConstants.kDriverControllerPort);
+
+  // The Operator's controller
+
+  Joystick m_operatorController = new Joystick(OIConstants.kOperatorControllerPort);
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -60,7 +81,15 @@ public class RobotContainer {
         m_robotDrive));
    ;    
    
-    
+
+
+   // add auto options to chooser
+   m_chooser.setDefaultOption("OffInitiationLine", OffInitiationLine);
+   //m_chooser.addOption("Complex Auto", m_complexAuto);
+
+    //put the chooser on the dashboard
+   Shuffleboard.getTab("Autonomous").add(m_chooser);
+
   }
   
   /**
@@ -84,12 +113,14 @@ public class RobotContainer {
     new JoystickButton(m_driverController, Button.kA.value)
     .whenPressed(new TurntoAngleNOPID(.3, 90));
 
-    // Turn to -90 degrees with a profile when the 'X' button is pressed
+    // Turn to -90 degrees when the 'X' button is pressed
     new JoystickButton(m_driverController, Button.kA.value)
-    .whenPressed(new TurntoAngleNOPID(.3, 270));
-
+    .whenPressed(new TurntoAngleNOPID(.3, -90));
+    // Turn to 180 degrees when the 'A' button is pressed
     new JoystickButton(m_driverController, Button.kA.value)
     .whenPressed(new TurntoAngleNOPID(.3, 180));
+    
+    
   }
   
 

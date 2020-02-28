@@ -20,7 +20,7 @@ public class Winch extends SubsystemBase {
 
   }
 
-  public void useOutput(double output){
+  public void setOutput(double output){
     WinchMotor.set(output);
   }
 

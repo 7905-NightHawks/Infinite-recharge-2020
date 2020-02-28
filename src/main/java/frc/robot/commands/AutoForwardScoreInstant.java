@@ -10,20 +10,18 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 
-public class ForwardScore extends CommandBase {
+public class AutoForwardScoreInstant extends CommandBase {
   /**
-   * Creates a new ForwardScore.
+   * Creates a new AutoForwardScoreInstant.
    */
-  public ForwardScore() {
-    // Use addRequirements() here to declare subsystem dependencies.
+  public AutoForwardScoreInstant() {
     addRequirements(RobotContainer.DriveSubsystem);
+    addRequirements(RobotContainer.Ramp);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-
-
   }
 
   // Called every time the scheduler runs while the command is scheduled.
