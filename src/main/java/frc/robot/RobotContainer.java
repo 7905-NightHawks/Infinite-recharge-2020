@@ -31,7 +31,7 @@ import frc.robot.subsystems.DriveSubsystem;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  
+  public static DriveSubsystem DriveSubsystem = new DriveSubsystem();
   
 
   public static DriveSubsystem m_robotDrive = new DriveSubsystem();
@@ -56,7 +56,7 @@ public class RobotContainer {
 
     m_robotDrive.setDefaultCommand(new RunCommand(
         () -> m_robotDrive.curvatureDrive(m_robotDrive.getSpeed(), m_driverController.getX(GenericHID.Hand.kRight),
-      Math.abs(m_robotDrive.getSpeed()) < 0.15 ||  RightTrigger.get()), // quick turn if below set speed or if trigger is pressed
+      Math.abs(m_robotDrive.getSpeed()) < 0.15 ||  RightTrigger.get()), // quick turn if below set speed or if trigger is held
         m_robotDrive));
    ;    
    
@@ -77,7 +77,7 @@ public class RobotContainer {
 
 
     
-    
+           
   
 
     // Turn to 90 degrees when the 'B' button is pressed

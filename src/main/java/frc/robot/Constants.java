@@ -25,18 +25,7 @@ public final class Constants {
         public static final int kLeftMotor2Port = 2;
         public static final int kRightMotor1Port = 3;
         public static final int kRightMotor2Port = 12;
-    
-       //public static final int[] kLeftEncoderPorts = new int[]{0, 1};
-        //public static final int[] kRightEncoderPorts = new int[]{2, 3};
-       // public static final boolean kLeftEncoderReversed = false;
-        //public static final boolean kRightEncoderReversed = true;
-    
-       //public static final int kEncoderCPR = 1024 ;
-        //public static final double kWheelDiameterInches = 6 ;
-     //  public static final double kEncoderDistancePerPulse = 
-            
-          //  (kWheelDiameterInches * Math.PI) / (double) kEncoderCPR;
-    
+  
         public static final boolean kGyroReversed = false;
     
         public static final double kStabilizationP = .03;
@@ -61,15 +50,20 @@ public final class Constants {
         public static final int kDriverControllerPortY = 1;
         public static final int kDriverControllerPortX = 4;
         public static final double kDeadzone_Value = 0.1;
-        public static final double Precision_Move_Slow = 0.5;
-        public static final double Precision_Move_Norm = 0.7;
-        public static final double Precision_Move_Fast = 1.0;
-        public static final double Precision_Turn_Slow = 0.5;
-        public static final double Precision_Turn_Norm = 0.7;
-        public static final double Precision_Turn_Fast = 0.8;
+        public static final int kOperatorControllerPort = 0;
+        
+      
+      }
+      public static final class ClimbConstants {
+        public static final int ElevatorMotor = 13;
         
 
 
 
+
       }
+
+
+
+
     }
