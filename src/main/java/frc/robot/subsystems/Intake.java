@@ -7,15 +7,25 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants.IntakeConstants;
 
 public class Intake extends SubsystemBase {
-  /**
-   * Creates a new Intake.
-   */
+
+  private final WPI_VictorSPX IntakeMotor = new WPI_VictorSPX(IntakeConstants.IntakeMotor);
+
   public Intake() {
 
   }
+  public void useOutput(double output) {
+    IntakeMotor.set(output);
+  }
+
+
+
+
 
   @Override
   public void periodic() {

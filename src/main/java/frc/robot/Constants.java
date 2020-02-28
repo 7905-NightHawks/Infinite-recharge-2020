@@ -56,14 +56,20 @@ public final class Constants {
       }
       public static final class ClimbConstants {
         public static final int ElevatorMotor = 13;
-        
-
-
-
-
+        public static final int WinchMotor = 6;
+      
       }
 
+      public static final class IntakeConstants {
+        public static final int IntakeMotor = 14;
 
+      }
+      public static final class RampConstants {
+        public static final int TopRampMotor = 15;
+        public static final int BottomRampMotor = 1;
+
+      }
+    
 
 
     }

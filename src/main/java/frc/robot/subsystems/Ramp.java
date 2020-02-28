@@ -7,15 +7,27 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants.RampConstants;
 
 public class Ramp extends SubsystemBase {
-  /**
-   * Creates a new Ramp.
-   */
+
+  private final WPI_VictorSPX TopRampMotor = new WPI_VictorSPX(RampConstants.TopRampMotor);
+  private final WPI_VictorSPX BottomRampMotor = new WPI_VictorSPX(RampConstants.BottomRampMotor);
+
+  private final SpeedControllerGroup m_RampMotors = new SpeedControllerGroup(TopRampMotor, BottomRampMotor);
+
   public Ramp() {
 
   }
+
+public void useOutput(double output) {
+  m_RampMotors.set(output);
+}
+
 
   @Override
   public void periodic() {
