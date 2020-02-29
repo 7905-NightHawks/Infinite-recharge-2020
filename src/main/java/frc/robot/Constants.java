@@ -59,8 +59,8 @@ public final class Constants {
         public static final int kOperatorControllerA = 1;
         public static final int kOperatorControllerStop = 7;
         public static final int kOperatorControllerStart = 8;
-        public static final int kOperatorControllerTriggerAxis = 3;
-        
+        public static final int kOperatorControllerRightTrigger = 3;
+        public static final int kOperatorControllerLeftTrigger = 2;
       
       }
       public static final class ClimbConstants {
@@ -77,6 +77,7 @@ public final class Constants {
       public static final class RampConstants {
         public static final int TopRampMotor = 15;
         public static final int BottomRampMotor = 1;
+        public static final double RampSpeedUp = 0.9;
 
       }
     public static final class AutoConstants {

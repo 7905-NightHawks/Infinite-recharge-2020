@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.AutoConstants;
 import frc.robot.Constants.OIConstants;
+import frc.robot.Constants.RampConstants;
 import frc.robot.commands.DriveForwardXForY;
 import frc.robot.commands.TurntoAngleNOPID;
 import frc.robot.subsystems.DriveSubsystem;
@@ -53,7 +54,7 @@ public class RobotContainer {
  
   public static DriveSubsystem m_robotDrive = new DriveSubsystem();
 
-  // The driver's controller
+  // The Driver's controller
   XboxController m_driverController = new XboxController(OIConstants.kDriverControllerPort);
 
   // The Operator's controller
@@ -69,7 +70,7 @@ public class RobotContainer {
 
     XBoxTrigger RightTrigger;
 
-    RightTrigger = new XBoxTrigger(m_driverController, 3);
+    RightTrigger = new XBoxTrigger(m_driverController, OIConstants.TriggerAxis);
 
 
 
@@ -120,7 +121,10 @@ public class RobotContainer {
     new JoystickButton(m_driverController, Button.kA.value)
     .whenPressed(new TurntoAngleNOPID(.3, 180));
     
-    
+    // Power ramp forward when 'rightbumper' is pressed 
+    new JoystickButton(m_operatorController, OIConstants.kOperatorControllerRightBumper)
+    .whenPressed(() -> Ramp.setOutput(RampConstants.RampSpeedUp))
+    .whenReleased(() -> Ramp.setOutput(0));
   }
   
 
