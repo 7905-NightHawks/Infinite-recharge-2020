@@ -67,11 +67,13 @@ public final class Constants {
         public static final int ElevatorMotor = 13;
         public static final int WinchMotor = 6;
         public static final double ElevatorSpeed = 0.5;
+        public static final double WinchSpeed = 0.5;
       
       }
 
       public static final class IntakeConstants {
         public static final int IntakeMotor = 14;
+        public static final double IntakeSpeed = 0.6;
 
       }
       public static final class RampConstants {
@@ -81,7 +83,7 @@ public final class Constants {
 
       }
     public static final class AutoConstants {
-      public static final double simpleDriveForwardPower = 0.5;
+      public static final double simpleDriveForwardPower = 0.7;
       public static final double simpleDriveForwardtime = 3000;
     }
 

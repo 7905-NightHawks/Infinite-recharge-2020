@@ -18,6 +18,8 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.AutoConstants;
+import frc.robot.Constants.ClimbConstants;
+import frc.robot.Constants.IntakeConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.Constants.RampConstants;
 import frc.robot.commands.DriveForwardXForY;
@@ -47,7 +49,7 @@ public class RobotContainer {
   public static Rampsubsystem Ramp = new Rampsubsystem();
   public static Winch Winch = new Winch();
 
-  private final Command OffInitiationLine = new DriveForwardXForY(AutoConstants.simpleDriveForwardPower, AutoConstants.simpleDriveForwardtime);
+  //private final Command OffInitiationLine = new DriveForwardXForY(AutoConstants.simpleDriveForwardPower, AutoConstants.simpleDriveForwardtime);
 
  
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -55,6 +57,7 @@ public class RobotContainer {
   public static DriveSubsystem m_robotDrive = new DriveSubsystem();
 
   // The Driver's controller
+
   XboxController m_driverController = new XboxController(OIConstants.kDriverControllerPort);
 
   // The Operator's controller
@@ -85,11 +88,11 @@ public class RobotContainer {
 
 
    // add auto options to chooser
-   m_chooser.setDefaultOption("OffInitiationLine", OffInitiationLine);
+  // m_chooser.setDefaultOption("OffInitiationLine", OffInitiationLine);
    //m_chooser.addOption("Complex Auto", m_complexAuto);
 
     //put the chooser on the dashboard
-   Shuffleboard.getTab("Autonomous").add(m_chooser);
+   //Shuffleboard.getTab("Autonomous").add(m_chooser);
 
   }
   
@@ -100,16 +103,13 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
+
+    // Driver
+    
     new JoystickButton(m_driverController, Button.kBumperLeft.value)
         .whenPressed(() -> m_robotDrive.setMaxOutput(0.5))
         .whenReleased(() -> m_robotDrive.setMaxOutput(1));
         
-
-
-    
-           
-  
-
     // Turn to 90 degrees when the 'B' button is pressed
     new JoystickButton(m_driverController, Button.kA.value)
     .whenPressed(new TurntoAngleNOPID(.3, 90));
@@ -117,15 +117,46 @@ public class RobotContainer {
     // Turn to -90 degrees when the 'X' button is pressed
     new JoystickButton(m_driverController, Button.kA.value)
     .whenPressed(new TurntoAngleNOPID(.3, -90));
+
     // Turn to 180 degrees when the 'A' button is pressed
     new JoystickButton(m_driverController, Button.kA.value)
     .whenPressed(new TurntoAngleNOPID(.3, 180));
+
+
+    // Operator
     
     // Power ramp forward when 'rightbumper' is pressed 
     new JoystickButton(m_operatorController, OIConstants.kOperatorControllerRightBumper)
     .whenPressed(() -> Ramp.setOutput(RampConstants.RampSpeedUp))
     .whenReleased(() -> Ramp.setOutput(0));
+
+    // Power Intake forward when 'Leftbumper' is pressed
+    new JoystickButton(m_operatorController, OIConstants.kOperatorControllerLeftBumper)
+    .whenPressed(() -> Intake.setOutput(IntakeConstants.IntakeSpeed))
+    .whenReleased(() -> Intake.setOutput(0));
+
+    // Winch up when 'A' button is pressed
+    new JoystickButton(m_operatorController, OIConstants.kOperatorControllerA)
+    .whenPressed(() -> Winch.setOutput(ClimbConstants.WinchSpeed))
+    .whenReleased(() -> Winch.setOutput(0));
+
+    //Elevator up when 'Y' button is pressed
+    new JoystickButton(m_operatorController, OIConstants.kOperatorControllerY)
+    .whenPressed(() -> Elevator.setOutput(ClimbConstants.ElevatorSpeed))
+    .whenReleased(() -> Elevator.setOutput(0));
+
+
+
+
+
+
+
+
+
   }
+
+
+
   
 
 
