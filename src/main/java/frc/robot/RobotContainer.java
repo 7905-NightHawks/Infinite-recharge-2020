@@ -110,42 +110,42 @@ public class RobotContainer {
     // Driver
     
     new JoystickButton(m_driverController, Button.kBumperLeft.value)
-        .whenPressed(() -> m_robotDrive.setMaxOutput(0.5))
+        .whileHeld(() -> m_robotDrive.setMaxOutput(0.5))
         .whenReleased(() -> m_robotDrive.setMaxOutput(1));
         
     // Turn to 90 degrees when the 'B' button is pressed
     new JoystickButton(m_driverController, Button.kA.value)
-    .whenPressed(new TurntoAngleNOPID(.3, 90));
+    .whileHeld(new TurntoAngleNOPID(.3, 90));
 
     // Turn to -90 degrees when the 'X' button is pressed
     new JoystickButton(m_driverController, Button.kA.value)
-    .whenPressed(new TurntoAngleNOPID(.3, -90));
+    .whileHeld(new TurntoAngleNOPID(.3, -90));
 
     // Turn to 180 degrees when the 'A' button is pressed
     new JoystickButton(m_driverController, Button.kA.value)
-    .whenPressed(new TurntoAngleNOPID(.3, 180));
+    .whileHeld(new TurntoAngleNOPID(.3, 180));
 
 
     // Operator
     
     // Power ramp forward when 'rightbumper' is pressed 
     new JoystickButton(m_operatorController, OIConstants.kOperatorControllerRightBumper)
-    .whenPressed(() -> Ramp.setOutput(RampConstants.RampSpeedUp))
+    .whileHeld(() -> Ramp.setOutput(RampConstants.RampSpeedUp))
     .whenReleased(() -> Ramp.setOutput(0));
 
     // Power Intake forward when 'Leftbumper' is pressed
     new JoystickButton(m_operatorController, OIConstants.kOperatorControllerLeftBumper)
-    .whenPressed(() -> Intake.setOutput(IntakeConstants.IntakeSpeed))
+    .whileHeld(() -> Intake.setOutput(IntakeConstants.IntakeSpeed))
     .whenReleased(() -> Intake.setOutput(0));
 
     // Winch up when 'A' button is pressed
     new JoystickButton(m_operatorController, OIConstants.kOperatorControllerA)
-    .whenPressed(() -> Winch.setOutput(ClimbConstants.WinchSpeed))
+    .whileHeld(() -> Winch.setOutput(ClimbConstants.WinchSpeed))
     .whenReleased(() -> Winch.setOutput(0));
 
     //Elevator up when 'Y' button is pressed
     new JoystickButton(m_operatorController, OIConstants.kOperatorControllerY)
-    .whenPressed(() -> Elevator.setOutput(ClimbConstants.ElevatorSpeed))
+    .whileHeld(() -> Elevator.setOutput(ClimbConstants.ElevatorSpeed))
     .whenReleased(() -> Elevator.setOutput(0));
 
 
