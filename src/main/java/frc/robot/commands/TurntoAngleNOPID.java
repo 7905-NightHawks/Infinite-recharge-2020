@@ -25,7 +25,7 @@ public class TurntoAngleNOPID extends CommandBase {
   public TurntoAngleNOPID(double speed, double givenAngle) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    addRequirements(RobotContainer.DriveSubsystem);
+    addRequirements(RobotContainer.m_robotDrive);
     goalAngle = givenAngle;
     this.speed = speed;
     isDone = false;
@@ -43,15 +43,15 @@ public class TurntoAngleNOPID extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double currentAngle = RobotContainer.DriveSubsystem.getAHRSGyroAngle();
+    double currentAngle = RobotContainer.m_robotDrive.getAHRSGyroAngle();
     
     if (Math.abs(goalAngle - currentAngle) < tolerance) { // if within tolerance
-      RobotContainer.DriveSubsystem.curvatureDrive(0, 0, true);
+      RobotContainer.m_robotDrive.curvatureDrive(0, 0, true);
       isDone = true;
     } else if (currentAngle < goalAngle) { // If left of target angle
-      RobotContainer.DriveSubsystem.curvatureDrive(0, speed, true); // turn clockwise
+      RobotContainer.m_robotDrive.curvatureDrive(0, speed, true); // turn clockwise
     } else if (currentAngle > goalAngle) { // If right of target angle
-      RobotContainer.DriveSubsystem.curvatureDrive(0, -speed, true); // turn counterclockwise
+      RobotContainer.m_robotDrive.curvatureDrive(0, -speed, true); // turn counterclockwise
     }
   }
 
@@ -62,7 +62,7 @@ public class TurntoAngleNOPID extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {    
-    RobotContainer.DriveSubsystem.curvatureDrive(0, 0, true);
+    RobotContainer.m_robotDrive.curvatureDrive(0, 0, true);
     isDone = true;
   }
 

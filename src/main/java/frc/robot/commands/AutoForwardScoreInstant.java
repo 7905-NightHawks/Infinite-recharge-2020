@@ -15,7 +15,7 @@ public class AutoForwardScoreInstant extends CommandBase {
    * Creates a new AutoForwardScoreInstant.
    */
   public AutoForwardScoreInstant() {
-    addRequirements(RobotContainer.DriveSubsystem);
+    addRequirements(RobotContainer.m_robotDrive);
     addRequirements(RobotContainer.Ramp);
   }
 

@@ -67,6 +67,11 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void disabledInit() {
+
+    RobotContainer.m_robotDrive.setm_leftMotors(0);
+    RobotContainer.m_robotDrive.setm_rightMotors(0);
+
+
   }
 
   @Override
@@ -109,7 +114,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-    SmartDashboard.putNumber("gyro", RobotContainer.DriveSubsystem.getAHRSGyroAngle());
+    SmartDashboard.putNumber("gyro", RobotContainer.m_robotDrive.getAHRSGyroAngle());
   }
 
   @Override

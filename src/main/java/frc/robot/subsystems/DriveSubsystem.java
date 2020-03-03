@@ -7,12 +7,12 @@
 
 package frc.robot.subsystems;
 
+
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.GenericHID;
-//import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.XboxController;
@@ -33,6 +33,13 @@ public class DriveSubsystem extends SubsystemBase {
       new SpeedControllerGroup(new WPI_VictorSPX(DriveConstants.kRightMotor1Port),
                                new WPI_VictorSPX(DriveConstants.kRightMotor2Port));
 
+  public void setm_leftMotors(double speed) {
+    m_leftMotors.set(speed);
+  }                            
+
+  public void setm_rightMotors(double speed) {
+    m_rightMotors.set(speed);
+  }
   // The robot's drive
   private final DifferentialDrive m_drive = new DifferentialDrive(m_leftMotors, m_rightMotors);
 
@@ -114,7 +121,10 @@ public class DriveSubsystem extends SubsystemBase {
    public double getSpeed(){
      return -m_driverController.getY(GenericHID.Hand.kLeft);
    }
-   
+
+   public double getCurvature(){
+     return m_driverController.getX(GenericHID.Hand.kRight);
+   }
    
    /**
     * Returns the turn rate of the robot.

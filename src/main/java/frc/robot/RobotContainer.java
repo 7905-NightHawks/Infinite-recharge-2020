@@ -14,7 +14,6 @@ import edu.wpi.first.wpilibj.XboxController.Button;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.AutoConstants;
@@ -43,13 +42,12 @@ import frc.robot.subsystems.Winch;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  public static DriveSubsystem DriveSubsystem = new DriveSubsystem();
   public static Elevator Elevator = new Elevator();
   public static Intake Intake = new Intake();
   public static Rampsubsystem Ramp = new Rampsubsystem();
   public static Winch Winch = new Winch();
 
-  //private final Command OffInitiationLine = new DriveForwardXForY(AutoConstants.simpleDriveForwardPower, AutoConstants.simpleDriveForwardtime);
+  private final Command OffInitiationLine = new DriveForwardXForY(AutoConstants.simpleDriveForwardPower, AutoConstants.simpleDriveForwardtime);
 
  
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -85,14 +83,18 @@ public class RobotContainer {
         m_robotDrive));
    ;    
    
+   if (Math.abs(m_robotDrive.getSpeed()) < 0.07 && Math.abs(m_robotDrive.getCurvature()) < 0.07){
+    m_robotDrive.setm_leftMotors(0);
+    m_robotDrive.setm_rightMotors(0);
+   }
 
 
    // add auto options to chooser
-  // m_chooser.setDefaultOption("OffInitiationLine", OffInitiationLine);
+   m_chooser.setDefaultOption("OffInitiationLine", OffInitiationLine);
    //m_chooser.addOption("Complex Auto", m_complexAuto);
 
     //put the chooser on the dashboard
-   //Shuffleboard.getTab("Autonomous").add(m_chooser);
+   Shuffleboard.getTab("Autonomous").add(m_chooser);
 
   }
   
@@ -167,6 +169,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return new InstantCommand();
+    return m_chooser.getSelected();
   }
 }

@@ -17,7 +17,7 @@ public class DriveForwardXForY extends CommandBase {
     protected long endTime;
 
   public DriveForwardXForY(double power, double timeInMillis) {
-    addRequirements(RobotContainer.DriveSubsystem);
+    addRequirements(RobotContainer.m_robotDrive);
     this.power = power;
     this.time = timeInMillis;
   }
@@ -37,14 +37,14 @@ public class DriveForwardXForY extends CommandBase {
   @Override
   public void execute() {
 
-    RobotContainer.DriveSubsystem.curvatureDrive(power, 0, false);
+    RobotContainer.m_robotDrive.curvatureDrive(power, 0, false);
   }
 
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    RobotContainer.DriveSubsystem.curvatureDrive(0, 0, false);
+    RobotContainer.m_robotDrive.curvatureDrive(0, 0, false);
   }
 
   // Returns true when the command should end.
