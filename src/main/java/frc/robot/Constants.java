@@ -83,8 +83,15 @@ public final class Constants {
 
       }
     public static final class AutoConstants {
-      public static final double simpleDriveForwardPower = 0.7;
+      // initiation line
+      public static final double simpleDriveForwardPower = 0.5;
       public static final double simpleDriveForwardtime = 3000;
+
+      //foward Score
+    public static final double ForwardScoreDriveForwardPower = 0.5;
+    public static final double ForwardScoreDriveForwardTime = 2000;
+    public static final double ForwardScoreRampTime = 5000;
+
     }
 
 
