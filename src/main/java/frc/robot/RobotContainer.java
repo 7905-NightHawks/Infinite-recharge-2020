@@ -22,6 +22,9 @@ import frc.robot.Constants.IntakeConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.Constants.RampConstants;
 import frc.robot.commands.Auto_ForwardScore;
+import frc.robot.commands.Auto_ForwardScoreDelay;
+import frc.robot.commands.Auto_ForwardScoreMove;
+import frc.robot.commands.Auto_TrenchandScore;
 import frc.robot.commands.DriveForwardXForY;
 import frc.robot.commands.TurntoAngleNOPID;
 import frc.robot.subsystems.DriveSubsystem;
@@ -50,6 +53,9 @@ public class RobotContainer {
 
   private final Command OffInitiationLine = new DriveForwardXForY(AutoConstants.simpleDriveForwardPower, AutoConstants.simpleDriveForwardtime);
   private final Command Auto_ForwardScore = new Auto_ForwardScore(m_robotDrive, Ramp);
+  private final Command Auto_ForwardScoreMove = new Auto_ForwardScoreMove(m_robotDrive, Ramp);
+  private final Command Auto_DelayForwardScore = new Auto_ForwardScoreDelay(m_robotDrive, Ramp);
+  private final Command Auto_TrenchandScore = new Auto_TrenchandScore(m_robotDrive, Ramp);
  
   SendableChooser<Command> m_chooser = new SendableChooser<>();
  
@@ -92,7 +98,10 @@ public class RobotContainer {
 
    // add auto options to chooser
    m_chooser.setDefaultOption("OffInitiationLine", OffInitiationLine);
-   m_chooser.addOption("ForwardScore", Auto_ForwardScore);
+   m_chooser.addOption("ForwardScoreStay", Auto_ForwardScore);
+   m_chooser.addOption("ForwardScoreMove", Auto_ForwardScoreMove);
+   m_chooser.addOption("ForwardScoreDelay7", Auto_DelayForwardScore);
+   m_chooser.addOption("TrenchAndScore", Auto_TrenchandScore);
 
     //put the chooser on the dashboard
    Shuffleboard.getTab("Autonomous").add(m_chooser);

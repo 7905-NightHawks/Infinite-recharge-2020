@@ -15,19 +15,19 @@ import frc.robot.subsystems.Rampsubsystem;
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/latest/docs/software/commandbased/convenience-features.html
-public class Auto_ForwardScore extends SequentialCommandGroup {
+public class Auto_ForwardScoreMove extends SequentialCommandGroup {
   /**
-   * Creates a new Auto_ForwardScore.
+   * Creates a new Auto_ForwardScoreMove.
    */
-  public Auto_ForwardScore(DriveSubsystem Drive, Rampsubsystem Ramp) {
-    
+  public Auto_ForwardScoreMove(DriveSubsystem Drive, Rampsubsystem Ramp) {
     addCommands(
 
       new DriveForwardXForY(AutoConstants.ForwardScoreDriveForwardPower, AutoConstants.ForwardScoreDriveForwardTime),
 
-      new RampPowerForward(AutoConstants.ForwardScoreRampTime));
+      new RampPowerForward(AutoConstants.ForwardScoreRampTime),
 
+      new AutoTurn(AutoConstants.ForwardScoreTurnPower, AutoConstants.ForwardScoreTurnTime),
 
-
+      new DriveForwardXForY(AutoConstants.ForwardScoreBackupPower, AutoConstants.ForwardScoreBackupTime));
   }
 }

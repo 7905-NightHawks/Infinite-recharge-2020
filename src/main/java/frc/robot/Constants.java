@@ -88,9 +88,39 @@ public final class Constants {
       public static final double simpleDriveForwardtime = 3000;
 
       //foward Score
-    public static final double ForwardScoreDriveForwardPower = 0.5;
+    public static final double ForwardScoreDriveForwardPower = -0.5;
     public static final double ForwardScoreDriveForwardTime = 2000;
     public static final double ForwardScoreRampTime = 5000;
+    public static final double DoNothingTime = 7000;
+      // forward score move
+      public static final double ForwardScoreTurnPower = 0.5;
+      public static final double ForwardScoreTurnTime = 1000;
+      public static final double ForwardScoreBackupPower = 0.5;
+      public static final double ForwardScoreBackupTime = 2000;
+    //TrenchandScore
+      public static final double InitlinetofirstcellPower = 0.9;
+      public static final double InitLineToFirstCellTime = 1500;
+      public static final double GetCellPower = 0.3;
+      public static final double GetCellTime = 1500;
+      public static final double RampTimeGetCell = 1500;
+      public static final double IntakeTimeGetCell = 1500;
+      public static final double FirstCelltoSecondCellPower = 0.9;
+      public static final double FirstCellToSecondCellTime = 700;
+      public static final double SecondCelltoTurnPointPower = -0.9;
+      public static final double SecondCellToTurnPointTime = 3000;
+      public static final double TurnfromTurnPointPower = -0.5;
+      public static final double TurnFromTurnPointTime = 1000;
+      public static final double TurnPointToGoalTurnPointPower = -0.9;
+      public static final double TurnPointToGoalTurnPointTime = 2000;
+      public static final double GoalTurnPower = 0.5;
+      public static final double GoalTurnTime = 1000;
+      public static final double ToGoalPower = 0.5;
+      public static final double ToGoalTime = 1500;
+      public static final double RampScoreTime = 6000;
+
+
+
+
 
     }
 

@@ -7,25 +7,28 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import frc.robot.Constants.AutoConstants;
 import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Rampsubsystem;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/latest/docs/software/commandbased/convenience-features.html
-public class Auto_ForwardScore extends SequentialCommandGroup {
+public class SlowMoveIntakeAndRampIn extends ParallelCommandGroup {
   /**
-   * Creates a new Auto_ForwardScore.
+   * Creates a new SlowMoveIntakeAndRampIn.
    */
-  public Auto_ForwardScore(DriveSubsystem Drive, Rampsubsystem Ramp) {
-    
+  public SlowMoveIntakeAndRampIn(DriveSubsystem Drive, Rampsubsystem Ramp, Intake Intake) {
+
     addCommands(
 
-      new DriveForwardXForY(AutoConstants.ForwardScoreDriveForwardPower, AutoConstants.ForwardScoreDriveForwardTime),
+    new DriveForwardXForY(AutoConstants.GetCellPower, AutoConstants.GetCellTime),
 
-      new RampPowerForward(AutoConstants.ForwardScoreRampTime));
+    new IntakeIn(AutoConstants.IntakeTimeGetCell),
+
+    new RampPowerForward(AutoConstants.RampTimeGetCell));
 
 
 
