@@ -7,14 +7,17 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.IntakeConstants;
 
 public class Intake extends SubsystemBase {
 
-  private final WPI_VictorSPX IntakeMotor = new WPI_VictorSPX(IntakeConstants.IntakeMotor);
+  //private final WPI_VictorSPX IntakeMotor = new WPI_VictorSPX(IntakeConstants.IntakeMotor);
+
+  private final  CANSparkMax IntakeMotor = new CANSparkMax(IntakeConstants.IntakeMotor, MotorType.kBrushed);
 
   public Intake() {
 

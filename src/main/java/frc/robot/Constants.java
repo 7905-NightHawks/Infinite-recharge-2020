@@ -21,10 +21,10 @@ public final class Constants {
     //Drivebase
 
     public static final class DriveConstants {
-        public static final int kLeftMotor1Port = 0;
+        public static final int kLeftMotor1Port = 16;
         public static final int kLeftMotor2Port = 2;
-        public static final int kRightMotor1Port = 3;
-        public static final int kRightMotor2Port = 12;
+        public static final int kRightMotor1Port = 6;
+        public static final int kRightMotor2Port = 3;
   
         public static final boolean kGyroReversed = false;
     
@@ -64,28 +64,29 @@ public final class Constants {
       
       }
       public static final class ClimbConstants {
-        public static final int ElevatorMotor = 13;
-        public static final int WinchMotor = 6;
-        public static final double ElevatorSpeed = 0.5;
-        public static final double WinchSpeed = 0.5;
+        public static final int ElevatorMotor = 1;
+        public static final int WinchMotor = 18;
+        public static final double ElevatorSpeed = 0.3;
+        public static final double WinchSpeed = 1.0;
+        public static final double ElevatorDownSpeed = -0.2;
       
       }
 
       public static final class IntakeConstants {
-        public static final int IntakeMotor = 14;
-        public static final double IntakeSpeed = 0.6;
+        public static final int IntakeMotor = 5;
+        public static final double IntakeSpeed = 0.5;
 
       }
       public static final class RampConstants {
-        public static final int TopRampMotor = 15;
-        public static final int BottomRampMotor = 1;
-        public static final double RampSpeedUp = 0.9;
+        public static final int TopRampMotor = 14;
+        public static final int BottomRampMotor = 20;
+        public static final double RampSpeedUp = 1.0;
 
       }
     public static final class AutoConstants {
       // initiation line
-      public static final double simpleDriveForwardPower = 0.5;
-      public static final double simpleDriveForwardtime = 3000;
+      public static final double simpleDriveForwardPower = 0.3;
+      public static final double simpleDriveForwardtime = 2000;
 
       //foward Score
     public static final double ForwardScoreDriveForwardPower = -0.5;

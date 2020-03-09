@@ -144,7 +144,7 @@ public class RobotContainer {
 
     // Power Intake forward when 'Leftbumper' is pressed
     new JoystickButton(m_operatorController, OIConstants.kOperatorControllerLeftBumper)
-    .whileHeld(() -> Intake.setOutput(IntakeConstants.IntakeSpeed))
+    .whileHeld(() -> Intake.setOutput(-IntakeConstants.IntakeSpeed))
     .whenReleased(() -> Intake.setOutput(0));
 
     // Winch up when 'A' button is pressed
@@ -157,7 +157,17 @@ public class RobotContainer {
     .whileHeld(() -> Elevator.setOutput(ClimbConstants.ElevatorSpeed))
     .whenReleased(() -> Elevator.setOutput(0));
 
+    new JoystickButton(m_operatorController, OIConstants.kOperatorControllerB)
+    .whileHeld(() -> Elevator.setOutput(-ClimbConstants.ElevatorSpeed))
+    .whenReleased(() -> Elevator.setOutput(0));
 
+   // new JoystickButton(m_operatorController, OIConstants.kOperatorControllerX)
+    //.whileHeld(() -> Intake.setOutput(-IntakeConstants.IntakeSpeed))
+   // .whenReleased(() -> Intake.setOutput(0));
+
+    new JoystickButton(m_operatorController, OIConstants.kOperatorControllerX)
+    .whileHeld(() -> Winch.setOutput(-ClimbConstants.WinchSpeed))
+    .whenReleased(() -> Winch.setOutput(0));
 
 
 
